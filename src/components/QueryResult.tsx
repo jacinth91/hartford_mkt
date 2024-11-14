@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, TrendingDown, TrendingUp, Minus, MessageSquare } from 'lucide-react';
+import { TrendingDown, TrendingUp, Minus } from 'lucide-react';
 
 interface FinancialMetric {
   category: string;
@@ -30,23 +30,11 @@ const QueryResult: React.FC<QueryResultProps> = ({ isVisible, metrics, query }) 
 
   return (
     <div className="bg-white rounded-lg shadow-sm mb-6 overflow-hidden">
-      <div className="px-4 py-5 sm:px-6 flex items-center justify-between border-b border-gray-200">
-        <div>
-          <h3 className="text-lg font-medium leading-6 text-gray-900">Query Results</h3>
-          <p className="mt-1 text-sm text-gray-500">Financial metrics analysis</p>
-        </div>
-        <Table className="h-6 w-6 text-blue-500" />
-      </div>
-
       {query && (
-        <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
-          <div className="flex items-start space-x-3">
-            <MessageSquare className="h-5 w-5 text-blue-500 mt-0.5" />
-            <div>
-              <h4 className="text-sm font-medium text-gray-700">Your Query</h4>
-              <p className="mt-1 text-sm text-gray-900">{query}</p>
-            </div>
-          </div>
+        <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">
+          <p className="text-sm text-gray-700">
+            <span className="font-medium">Query:</span> {query}
+          </p>
         </div>
       )}
       
@@ -54,16 +42,16 @@ const QueryResult: React.FC<QueryResultProps> = ({ isVisible, metrics, query }) 
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Category
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Value
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Trend
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Details
               </th>
             </tr>
@@ -71,18 +59,18 @@ const QueryResult: React.FC<QueryResultProps> = ({ isVisible, metrics, query }) 
           <tbody className="bg-white divide-y divide-gray-200">
             {metrics.map((metric, index) => (
               <tr key={index} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
                   {metric.category}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">
                   {metric.value}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
                   <div className="flex items-center">
                     {getTrendIcon(metric.trend)}
                   </div>
                 </td>
-                <td className="px-6 py-4 text-sm text-gray-500">
+                <td className="px-4 py-2 text-sm text-gray-500">
                   {metric.details}
                 </td>
               </tr>
